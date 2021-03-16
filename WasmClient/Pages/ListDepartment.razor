@@ -1,0 +1,50 @@
+﻿@page "/listdepartments"
+@using OpenAPIClient;
+@inject HttpClient httpClient
+@inject NavigationManager uriHelper
+
+<h3>List of Departments</h3>
+
+
+<input type="button" value="Add Record" class="btn btn-warning" @onclick="@NavigateToAdd"/>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>DeptNo</th>
+			<th>DeptName</th>
+			<th>Location</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in departments)
+		{
+			<tr>
+				<td>@item.DeptNo</td>
+				<td>@item.DeptName</td>
+				<td>@item.Location</td>
+			</tr>
+		}
+
+	</tbody>
+
+</table>
+
+@code {
+
+	private DepartmentAPIClient client;
+	private List<Department> departments = new List<Department>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		client = new DepartmentAPIClient("https://localhost:44325/", httpClient);
+		var res = await client.GetallAsync(System.Threading.CancellationToken.None);
+		departments = res.ToList();
+	}
+
+	void NavigateToAdd()
+	{
+		uriHelper.NavigateTo("/createdepartment");
+	}
+}

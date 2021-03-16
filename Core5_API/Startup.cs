@@ -49,6 +49,10 @@ namespace Core5_API
 				  }
 				) ;
 			;
+
+			services.AddCors(options=> {
+				options.AddPolicy("corspolicy", policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+			});
 			//services.AddVersionedApiExplorer(options =>
 			//{
 			//	options.DefaultApiVersion = ApiVersion.Parse("1.0");
@@ -76,7 +80,7 @@ namespace Core5_API
 			}
 
 			app.UseHttpsRedirection();
-
+			app.UseCors("corspolicy");
 			app.UseRouting();
 
 			app.UseAuthorization();

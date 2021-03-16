@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core5_API", "Core5_API\Core
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApp", "ClientApp\ClientApp.csproj", "{E54E52CF-449A-44B8-973C-2A6319A827AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasmClient", "WasmClient\WasmClient.csproj", "{9E0FFED6-C61B-464E-8274-628C6C8B7028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E54E52CF-449A-44B8-973C-2A6319A827AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E54E52CF-449A-44B8-973C-2A6319A827AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E54E52CF-449A-44B8-973C-2A6319A827AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E0FFED6-C61B-464E-8274-628C6C8B7028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E0FFED6-C61B-464E-8274-628C6C8B7028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E0FFED6-C61B-464E-8274-628C6C8B7028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E0FFED6-C61B-464E-8274-628C6C8B7028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

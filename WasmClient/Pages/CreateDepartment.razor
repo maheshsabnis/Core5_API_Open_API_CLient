@@ -1,0 +1,49 @@
+﻿@page "/createdepartment"
+@using OpenAPIClient;
+@inject HttpClient httpClient
+@inject NavigationManager uriHelper
+<h3>Create  New Department</h3>
+
+<div class="container">
+	<EditForm OnValidSubmit="@saveDept" Model="@dept">
+		<div class="form-control">
+			<label>Dept No</label>
+			<input type="number" class="form-control" @bind-value="@dept.DeptNo" />
+		</div>
+		<div class="form-control">
+			<label>Dept Name</label>
+			<input type="text" class="form-control" @bind-value="@dept.DeptName" />
+		</div>
+		<div class="form-control">
+			<label>Location</label>
+			<input type="text" class="form-control" @bind-value="@dept.Location" />
+		</div>
+
+		<div class="form-control">
+			<input type="button" value="Clear" class="btn btn-warning" @onclick="@clear"/>
+			<input type="submit" value="Save" class="btn btn-success" />
+		</div>
+	</EditForm>
+</div>
+
+@code {
+	private Department dept;
+	private DepartmentAPIClient client;
+
+	protected override void OnInitialized()
+	{
+		dept = new Department();
+		client = new DepartmentAPIClient("https://localhost:44325/", httpClient);
+		base.OnInitialized();
+	}
+	void clear()
+	{
+		dept = new Department();
+	}
+
+	async Task saveDept()
+	{
+		var res = await client.CreateoneAsync(dept);
+		uriHelper.NavigateTo("/listdepartments");
+	}
+}
