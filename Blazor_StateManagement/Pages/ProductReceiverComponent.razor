@@ -1,0 +1,61 @@
+﻿@page "/productreceivercomponent"
+@using Blazor_StateManagement.Models;
+@inject StateService.StateContainerService stateService;
+@implements IDisposable
+@inject NavigationManager uriHelper;
+<h3>Product Receiver Component</h3>
+
+<div class="container">
+	<h2>The Received Category Id is = @CatId</h2>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Product Id</th>
+				<th>Product Name</th>
+				<th>Category Id</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var prd in filteredProducts)
+			{
+				<tr>
+					<td>@prd.ProductId</td>
+					<td>@prd.ProductName</td>
+					<td>@prd.CategoryId</td>
+
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+
+@code {
+	private Products products;
+	private List<Product> filteredProducts;
+	private int CatId;
+	protected override void OnInitialized()
+	{
+
+		products = new Products();
+		filteredProducts = new List<Product>();
+
+		CatId = stateService.Value;
+
+		if (CatId == 0)
+		{
+			filteredProducts = products;
+		}
+		else
+		{
+			filteredProducts = products.Where(p => p.CategoryId == CatId).ToList();
+		}
+
+
+
+	}
+	public void Dispose()
+	{
+		stateService.OnStateChange -= StateHasChanged;
+	}
+}

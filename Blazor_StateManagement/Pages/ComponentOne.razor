@@ -1,0 +1,28 @@
+﻿@page "/componentone"
+@inject StateService.StateContainerService stateService;
+@implements IDisposable
+<h3>Component 1</h3>
+
+<div class="container">
+	<h2>The   Component One</h2>
+	<strong>
+		@stateService.Message
+	</strong>
+	<hr />
+	<input type="button" value="Update Value" @onclick="@ChangeMessageValue"/>
+</div>
+
+
+@code { 
+	protected override void OnInitialized()
+	{
+		stateService.OnStateChange += StateHasChanged;
+	}
+	void ChangeMessageValue()
+	{
+		stateService.SetMessage($"I am the new Message from the Component One {DateTime.Now.ToString()}");	}
+
+	public void Dispose()
+	{
+		stateService.OnStateChange -= StateHasChanged;
+	}}

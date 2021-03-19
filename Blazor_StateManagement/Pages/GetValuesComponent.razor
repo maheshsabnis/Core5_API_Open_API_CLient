@@ -1,0 +1,52 @@
+﻿@page "/getvaluecomponent"
+
+@inject Blazored.LocalStorage.ILocalStorageService localStorage;
+
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage;
+
+<h3>Get Values Component</h3>
+
+<h3>
+	This component will retrieve data from the localStorage using Blazored.LocalStorage and
+	in sessionStorage using Blazored.SessionStorage
+</h3>
+
+<div class="container">
+	<strong>
+		Receivd Value from Local Storage
+		<br />
+		Person Id: @person.PersonId
+		<br />
+		First Name:@person.FirstName
+		<br />
+		Last Name: @person.LastName
+	</strong>
+	<hr />
+	<strong>
+		Receivd Value from Session Storage
+		<br />
+		Person Id: @personSession.PersonId
+		<br />
+		First Name:@personSession.FirstName
+		<br />
+		Last Name: @personSession.LastName
+	</strong>
+</div>
+
+@code {
+	private Person person;
+	private Person personSession;
+
+	protected async override Task OnInitializedAsync()
+	{
+		person = new Person();
+		personSession = new Person();
+
+		person = await localStorage.GetItemAsync<Person>("Person");
+		await localStorage.ClearAsync();
+
+		personSession = await sessionStorage.GetItemAsync<Person>("PersonSession");
+		await sessionStorage.ClearAsync();
+	}
+
+}

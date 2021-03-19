@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasmClient", "WasmClient\Wa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TokenBaseAuthentication", "TokenBaseAuthentication\TokenBaseAuthentication.csproj", "{63979F05-887A-4570-95F6-B1F50946D873}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyClientTokenBasedSecurity", "BlazorWebAssemblyClientTokenBasedSecurity\BlazorWebAssemblyClientTokenBasedSecurity.csproj", "{BA9C2E31-892E-47C4-819F-4D147A91DC3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyClientTokenBasedSecurity", "BlazorWebAssemblyClientTokenBasedSecurity\BlazorWebAssemblyClientTokenBasedSecurity.csproj", "{BA9C2E31-892E-47C4-819F-4D147A91DC3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_StateManagement", "Blazor_StateManagement\Blazor_StateManagement.csproj", "{D7DB7221-030E-45CB-9882-18F83E965034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_LazyLoading", "Blazor_LazyLoading\Blazor_LazyLoading.csproj", "{04587C88-31BE-4CB0-9C5D-4E4332C57603}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{BA9C2E31-892E-47C4-819F-4D147A91DC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA9C2E31-892E-47C4-819F-4D147A91DC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA9C2E31-892E-47C4-819F-4D147A91DC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7DB7221-030E-45CB-9882-18F83E965034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7DB7221-030E-45CB-9882-18F83E965034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7DB7221-030E-45CB-9882-18F83E965034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7DB7221-030E-45CB-9882-18F83E965034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04587C88-31BE-4CB0-9C5D-4E4332C57603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04587C88-31BE-4CB0-9C5D-4E4332C57603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04587C88-31BE-4CB0-9C5D-4E4332C57603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04587C88-31BE-4CB0-9C5D-4E4332C57603}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

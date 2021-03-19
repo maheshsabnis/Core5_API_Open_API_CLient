@@ -1,0 +1,52 @@
+﻿@page "/categorysendercomponent"
+@using Blazor_StateManagement.Models;
+@inject StateService.StateContainerService stateService;
+@implements IDisposable
+@inject NavigationManager uriHelper;
+<h3>Category Sender Component</h3>
+
+<div class="container">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Category Id</th>
+				<th>Category Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var cat in categories)
+			{
+				<tr>
+					<td>@cat.CategoryId</td>
+					<td>@cat.CategoryName</td>
+					<td>
+						<input type="button" @onclick="@(()=>SelectedCategoey(cat.CategoryId))" value="Select" />
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+
+@code {
+	private Category category;
+	private Categories categories;
+
+	protected override void OnInitialized()
+	{
+		category = new Category();
+		categories = new Categories();
+		stateService.OnStateChange += StateHasChanged;
+	}
+	void SelectedCategoey(int catid)
+	{
+		stateService.SetValue(catid);
+		uriHelper.NavigateTo("/productreceivercomponent");
+
+	}
+	public void Dispose()
+	{
+		stateService.OnStateChange -= StateHasChanged;
+	}
+}
