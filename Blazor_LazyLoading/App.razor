@@ -1,10 +1,48 @@
-<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-    </Found>
-    <NotFound>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p>Sorry, there's nothing at this address.</p>
-        </LayoutView>
-    </NotFound>
+<!--
+
+we import the required using directives and inject the AssemblyLoader to be able to load our assembly. 
+	Then in the Router component, we assign the OnNavigateAsync method to the OnNavigateAsync event callback. 
+	The OnNavigateAsync event callback triggers the event before navigating to a new page. 
+	Also, we populate the AdditionalAssemblies property. This property sets additional assemblies, 
+	from our application, to search for the components that match the required URIs.
+-->
+
+@inject LazyAssemblyLoader AssemblyLoader
+@using System.Reflection
+@using Microsoft.AspNetCore.Components.WebAssembly.Services
+
+<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true"
+		OnNavigateAsync="OnNavigateAsync"
+		AdditionalAssemblies="_lazyLoadedAssemblies">
+	<Found Context="routeData">
+		<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+	</Found>
+	<NotFound>
+		<LayoutView Layout="@typeof(MainLayout)">
+			<p>Sorry, there's nothing at this address.</p>
+		</LayoutView>
+	</NotFound>
 </Router>
+
+
+@code
+{
+
+	// In the @code part, we create a private list of assemblies named 
+	// _lazyLoadedAssemblies and the OnNavigateAsync method with the NavigationContext parameter.
+	// Inside the method, we use the context parameter to check the currently required route. 
+	// If it matches the fetchproducts, which is the route of our FetchData component, 
+	// we use the LoadAssembliesAsync method to load the ProductsLRazorLibrary.dll dependency 
+	// when the user navigates to the fetchproducts route, and then add it to a _lazyLoadedAssemblies list.
+
+
+	private List<Assembly> _lazyLoadedAssemblies = new List<Assembly>();
+	private async Task OnNavigateAsync(NavigationContext context)
+	{
+		if (context.Path == "fetchproducts")
+		{
+			var assemblies = await AssemblyLoader.LoadAssembliesAsync(new[] { "ProductsLRazorLibrary.dll" });
+			_lazyLoadedAssemblies.AddRange(assemblies);
+		}
+	}
+}

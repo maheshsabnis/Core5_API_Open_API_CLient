@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TokenBaseAuthentication", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyClientTokenBasedSecurity", "BlazorWebAssemblyClientTokenBasedSecurity\BlazorWebAssemblyClientTokenBasedSecurity.csproj", "{BA9C2E31-892E-47C4-819F-4D147A91DC3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_StateManagement", "Blazor_StateManagement\Blazor_StateManagement.csproj", "{D7DB7221-030E-45CB-9882-18F83E965034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_StateManagement", "Blazor_StateManagement\Blazor_StateManagement.csproj", "{D7DB7221-030E-45CB-9882-18F83E965034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_LazyLoading", "Blazor_LazyLoading\Blazor_LazyLoading.csproj", "{04587C88-31BE-4CB0-9C5D-4E4332C57603}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_LazyLoading", "Blazor_LazyLoading\Blazor_LazyLoading.csproj", "{04587C88-31BE-4CB0-9C5D-4E4332C57603}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsLRazorLibrary", "ProductsLRazorLibrary\ProductsLRazorLibrary.csproj", "{59B20C78-C78F-41F3-808F-F0C09A275E47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{04587C88-31BE-4CB0-9C5D-4E4332C57603}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04587C88-31BE-4CB0-9C5D-4E4332C57603}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04587C88-31BE-4CB0-9C5D-4E4332C57603}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59B20C78-C78F-41F3-808F-F0C09A275E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B20C78-C78F-41F3-808F-F0C09A275E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B20C78-C78F-41F3-808F-F0C09A275E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B20C78-C78F-41F3-808F-F0C09A275E47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

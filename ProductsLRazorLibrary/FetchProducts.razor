@@ -1,0 +1,66 @@
+﻿@page "/fetchproducts"
+@using System.Net.Http;   
+@using System.Text.Json;
+@using System.IO
+<h2>The Fetch Products</h2>
+
+<div class="container">
+	<table class="table table-bordered table-striped table-dark">
+		<thead>
+			<tr>
+				<th>Product Row Id</th>
+				<th>Product Id</th>
+				<th>Product Name</th>
+				<th>Category Name</th>
+				<th>Manufacturer</th>
+				<th>Description</th>
+				<th>Base Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in products)
+			{
+			<tr>
+				<td>@item.ProductRowId</td>
+				<td>@item.ProductId</td>
+				<td>@item.ProductName</td>
+				<td>@item.CategoryName</td>
+				<td>@item.Manufacturer</td>
+				<td>@item.Description</td>
+				<td>@item.BasePrice</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+@code {
+
+	private HttpClient httpClient;
+	private List<ProductInfo> products;
+
+
+	protected override async Task OnInitializedAsync()
+	{
+		products = new List<ProductInfo>();
+		httpClient = new HttpClient();
+		HttpResponseMessage response = await httpClient.
+				GetAsync("https://apiapptrainingnewapp.azurewebsites.net/api/Products");
+		response.EnsureSuccessStatusCode();
+
+		var jsonString = response.Content.ReadAsStringAsync();
+
+		products = JsonSerializer.Deserialize<List<ProductInfo>>(jsonString.Result);
+	}
+
+	public class ProductInfo
+	{
+		public int ProductRowId { get; set; }
+		public string ProductId { get; set; }
+		public string ProductName { get; set; }
+		public string CategoryName { get; set; }
+		public string Manufacturer { get; set; }
+		public string Description { get; set; }
+		public int BasePrice { get; set; }
+	}
+}
