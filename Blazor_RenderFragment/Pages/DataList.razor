@@ -1,0 +1,25 @@
+﻿@typeparam TItem
+
+<h2>The Generic List</h2>
+<div class="container">
+	<ul>
+		@foreach (TItem item in Data ?? Array.Empty<TItem>())
+		{
+			<li>@ChildContents(item)</li>
+		@*<li>
+			@foreach (var property in item.GetType().GetProperties())
+			{
+				@item.GetType().GetProperty(property.Name).GetValue(item,null);
+			}
+		</li>*@
+		}
+	</ul>
+</div>
+
+@code {
+	//@prd.GetType().GetProperty(header).GetValue(prd, null)
+	[Parameter]
+	public IEnumerable<TItem> Data { get; set; }
+	[Parameter]
+	public RenderFragment<TItem> ChildContents { get; set; }
+}

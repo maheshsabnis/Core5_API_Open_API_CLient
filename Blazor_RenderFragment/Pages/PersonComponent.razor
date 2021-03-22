@@ -1,0 +1,35 @@
+﻿@page "/personcomponent"
+@using System.Reflection; 
+<h1>Using the Dynamic List</h1>
+<DataList Data="@persons">
+	 <ChildContents>
+		@context.PersonId @context.FirstName @context.LastName
+	 </ChildContents>
+</DataList>
+
+@code { 
+
+	private List<Person> persons = new List<Person>();
+	private List<string> columns = new List<string>();
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+		PropertyInfo[] properties = typeof(Person).GetProperties(BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.DeclaredOnly);
+
+		foreach (PropertyInfo pname in properties)
+		{
+			columns.Add(pname.Name);
+		}
+
+		persons.Add(new Person() { PersonId = 101, FirstName = "Mahesh", LastName = "Sabnis" });
+		persons.Add(new Person() { PersonId = 102, FirstName = "Vikram", LastName = "Pendse" });
+		persons.Add(new Person() { PersonId = 103, FirstName = "Pravin", LastName = "Dabade" });
+		persons.Add(new Person() { PersonId = 104, FirstName = "Mukesh", LastName = "Sabnis" });
+
+	}
+	public class Person
+	{
+		public int PersonId { get; set; }
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+	}}
