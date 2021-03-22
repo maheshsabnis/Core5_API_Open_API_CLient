@@ -1,0 +1,39 @@
+﻿@page "/sessionsender"
+@using Blazor_SessionManagement.Models; 
+@inject  Blazored.SessionStorage.ISessionStorageService session;
+@inject NavigationManager urlHelper;
+<h3>Session Sender Page</h3>
+ 
+<EditForm Model="@person" OnValidSubmit="@OnSend">
+	<table class="table table-striped table-bordered">
+		<tr>
+			<td>
+				Name
+			</td>
+			<td>
+				<InputText class="form-control" @bind-Value="@person.PersonName"></InputText>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="Send"/>
+			</td>
+		</tr>
+	</table>
+</EditForm>
+
+@code {
+	 
+	Person person;
+	protected override void OnInitialized()
+	{
+		person = new Person();
+		base.OnInitialized();
+	}
+
+	void OnSend()
+	{
+		session.SetItemAsync("Name", person.PersonName);
+		urlHelper.NavigateTo("/sessionreceiver");
+	}
+}

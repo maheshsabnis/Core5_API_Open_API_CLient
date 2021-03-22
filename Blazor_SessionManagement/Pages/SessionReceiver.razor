@@ -1,0 +1,26 @@
+﻿@page "/sessionreceiver"
+@using Blazor_SessionManagement.Models;
+@inject Blazored.SessionStorage.ISessionStorageService session;
+
+<h3>Session Receiver Page</h3>
+
+<div class="container">
+	The Receive Value from the session
+	<h5>
+		<strong>
+			Received Name = @person.PersonName
+		</strong>
+	</h5>
+</div>
+
+
+@code {
+	Person person;
+
+	protected override async Task OnInitializedAsync()
+	{
+		person = new Person();
+		person.PersonName = await session.GetItemAsync<string>("Name");
+	}
+
+}
