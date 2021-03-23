@@ -21,7 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductsLRazorLibrary", "Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_RenderFragment", "Blazor_RenderFragment\Blazor_RenderFragment.csproj", "{28337AD7-16BB-494A-BB19-A15550115A35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_SessionManagement", "Blazor_SessionManagement\Blazor_SessionManagement.csproj", "{FCB8DC94-C10D-486C-8D8C-4FFD2D0FC1F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_SessionManagement", "Blazor_SessionManagement\Blazor_SessionManagement.csproj", "{FCB8DC94-C10D-486C-8D8C-4FFD2D0FC1F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFrwk_Library", "NetFrwk_Library\NetFrwk_Library.csproj", "{89B6DC4A-4B1D-4650-95EF-8B7F8595B202}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blaz_ServerAppNetLib", "Blaz_ServerAppNetLib\Blaz_ServerAppNetLib.csproj", "{E440F58D-81BB-4F40-9925-7DD595741C54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blaz_WebAssembly_Using_Net_Lib", "Blaz_WebAssembly_Using_Net_Lib\Blaz_WebAssembly_Using_Net_Lib.csproj", "{72366117-6600-4051-A57E-BACB98A0D18A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,18 @@ Global
 		{FCB8DC94-C10D-486C-8D8C-4FFD2D0FC1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCB8DC94-C10D-486C-8D8C-4FFD2D0FC1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCB8DC94-C10D-486C-8D8C-4FFD2D0FC1F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89B6DC4A-4B1D-4650-95EF-8B7F8595B202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B6DC4A-4B1D-4650-95EF-8B7F8595B202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B6DC4A-4B1D-4650-95EF-8B7F8595B202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B6DC4A-4B1D-4650-95EF-8B7F8595B202}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E440F58D-81BB-4F40-9925-7DD595741C54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E440F58D-81BB-4F40-9925-7DD595741C54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E440F58D-81BB-4F40-9925-7DD595741C54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E440F58D-81BB-4F40-9925-7DD595741C54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72366117-6600-4051-A57E-BACB98A0D18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72366117-6600-4051-A57E-BACB98A0D18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72366117-6600-4051-A57E-BACB98A0D18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72366117-6600-4051-A57E-BACB98A0D18A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

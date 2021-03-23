@@ -1,0 +1,41 @@
+﻿@page "/counter"
+
+@using NetFrwk_Library;
+@using System.Text.Json; 
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<p>
+	The Result of Add = @addResult
+</p>
+<button class="btn btn-primary" @onclick="@Add">Add From .NET Library</button>
+<hr/>
+<h6>List of Employees Received from .NET Library</h6>
+
+<div class="container">
+	{
+	  @JsonSerializer.Serialize(employees);
+	}
+</div>
+
+@code {
+	private int currentCount = 0;
+	private int addResult = 0;
+	private List<Employee> employees;
+	ClsData obj;
+
+	private void IncrementCount()
+	{
+		currentCount++;
+	}
+
+	private void Add()
+	{
+		obj = new ClsData();
+		employees = obj.GetEmployees(); 
+		addResult = obj.Add(10,20);
+	}
+}
