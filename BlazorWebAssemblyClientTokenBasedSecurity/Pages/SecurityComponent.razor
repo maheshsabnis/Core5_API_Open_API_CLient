@@ -132,11 +132,13 @@
 	}
 	async Task authUser()
 	{
+		// save the token in State (LocalStorage, SesionStorage or the Custom State Class)
 		response = await client.AuthAsync(loginUser);
 	}
 
 	async Task getProducts()
 	{
+		// set the request header for Authorization
 		httpClient.DefaultRequestHeaders.Authorization =
 		   new AuthenticationHeaderValue("Bearer", response.Message);
 		var result = await client.GetAsync();

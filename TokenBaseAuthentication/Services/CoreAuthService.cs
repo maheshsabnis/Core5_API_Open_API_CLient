@@ -17,6 +17,9 @@ namespace TokenBaseAuthentication.Services
     /// </summary>
     public class CoreAuthService
     {
+        /// <summary>
+        /// Interface to read appsettings.json
+        /// </summary>
         IConfiguration configuration;
         SignInManager<IdentityUser> signInManager;
         UserManager<IdentityUser> userManager;
@@ -43,8 +46,9 @@ namespace TokenBaseAuthentication.Services
         public async Task<bool> RegisterUserAsync(RegisterUser register)
         {
             bool IsCreated = false;
+            // RegisterUser information is passed to IdentityUser
             var registerUser = new IdentityUser() { UserName = register.Email, Email = register.Email };
-            // 2a.
+            // 2a.CReate a new user, CreateAsync() method  will Hash the Password
             var result = await userManager.CreateAsync(registerUser, register.Password);
             if (result.Succeeded)
             {
@@ -53,7 +57,7 @@ namespace TokenBaseAuthentication.Services
             return IsCreated;
         }
         /// <summary>
-        /// 3.
+        /// 3.Te method is used to Sing-In the user and generate token
         /// </summary>
         /// <param name="inputModel"></param>
         /// <returns></returns>
@@ -81,12 +85,16 @@ namespace TokenBaseAuthentication.Services
                 {
                     Issuer = null,
                     Audience = null,
+                    // claim, the token will contain the User Id as Payload 
+                    // in it
                     Subject = new ClaimsIdentity(new List<Claim> {
                         new Claim("username",user.Id,ToString()),
                     }),
                     Expires = DateTime.UtcNow.AddMinutes(expiryTimeSpan),
                     IssuedAt = DateTime.UtcNow,
                     NotBefore = DateTime.UtcNow,
+                    // Token Signeture
+                    // Containing Secret Key and the Algo
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKey), SecurityAlgorithms.HmacSha256Signature)
                 };
                 //3e Now generate token using JwtSecurityTokenHandler

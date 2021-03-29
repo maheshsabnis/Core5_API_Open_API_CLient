@@ -43,14 +43,19 @@ namespace TokenBaseAuthentication
 			});
 
 
+			// ASP.NET Core 5 Identity Registration
+			// Resolve UserManager and ServiceManager Classes using IdentityBuilder
 			services.AddIdentity<IdentityUser,IdentityRole>(
 			   options => options.SignIn.RequireConfirmedAccount = false)
 			   .AddEntityFrameworkStores<SecurityDbContext>();
 
 
 			services.AddScoped<CoreAuthService>();
+			// use the secret key this will be used for integrity check for the received token 
 			byte[] secretKey = Convert.FromBase64String(Configuration["JWTCoreSettings:SecretKey"]);
 
+			// this will read the request headerb and check is the Auth heade present
+			// in incomming request
 			services.AddAuthentication(x =>
 			{
 				x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -60,6 +65,7 @@ namespace TokenBaseAuthentication
 		{
 			x.RequireHttpsMetadata = false;
 			x.SaveToken = true;
+			// validate the token using the key 
 			x.TokenValidationParameters = new TokenValidationParameters
 			{
 				ValidateIssuerSigningKey = true,
@@ -93,7 +99,10 @@ namespace TokenBaseAuthentication
 			}
 			app.UseCors("corspolicy");
 			app.UseRouting();
-
+			// Middlewares those will be depend upon the
+			// Authentication service for
+			// User Based Authentication
+			// and then based on JWT Tokens
 			app.UseAuthentication();
 			app.UseAuthorization();
 
